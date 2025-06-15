@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossa História</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fbd3e9, #fceabb);
+      overflow-x: hidden;
+    }
+
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 100px 20px 40px;
+      color: #b30059;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
+
+    .timeline {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .moment {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .moment img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .moment p {
+      font-size: 1rem;
+      color: #80224d;
+    }
+
+    #quiz-section, #resultado-section, #carta-section {
+      display: none;
+      padding: 50px 20px;
+      text-align: center;
+      color: #b30059;
+    }
+
+    #start-btn, .quiz-btn, #ver-carta-btn {
+      margin: 20px auto;
+      display: block;
+      padding: 15px 30px;
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    #start-btn:hover, .quiz-btn:hover, #ver-carta-btn:hover {
+      background-color: #e6005c;
+    }
+
+    .quiz-btn {
+      margin-top: 15px;
+    }
+
+    #resultado-section img {
+      max-width: 90%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts-container"></div>
+
+  <div class="container" id="home-section">
+    <h1>Feliz Dia dos Namorados ❤️</h1>
+    <p>Essa é a nossa história, contada com carinho...</p>
+  </div>
+
+  <div class="timeline" id="timeline-section">
+    <div class="moment">
+      <img src="teste1.jpg" alt="Momento 1">
+      <p>Nosso primeiro sorriso juntos 💕</p>
+    </div>
+    <div class="moment">
+      <img src="teste2.jpg" alt="Momento 2">
+      <p>Aquele passeio inesquecível 🌅</p>
+    </div>
+    <div class="moment">
+      <img src="teste3.jpg" alt="Momento 3">
+      <p>O dia em que viramos melhores amigos 🥰</p>
+    </div>
+    <div class="moment">
+      <img src="teste4.jpg" alt="Momento 4">
+      <p>Risadas que nunca acabam 😂</p>
+    </div>
+    <div class="moment">
+      <img src="teste5.jpg" alt="Momento 5">
+      <p>Para sempre juntos 💖</p>
+    </div>
+    <button id="start-btn" onclick="iniciarQuiz()">Iniciar Quiz 💘</button>
+  </div>
+
+  <div id="quiz-section">
+    <h2>Quanto você acha que eu te amo? 💗</h2>
+    <button class="quiz-btn" onclick="mostrarResultado()">100</button>
+    <button class="quiz-btn" onclick="mostrarResultado()">1.000</button>
+    <button class="quiz-btn" onclick="mostrarResultado()">10.000</button>
+    <button class="quiz-btn" onclick="mostrarResultado()">100.000</button>
+  </div>
+
+  <div id="resultado-section">
+    <img src="https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2020/05/15/855143/20200515155248642562o.png" alt="Amor infinito">
+    <p style="font-size: 1.5rem;">Não há número suficiente para representar meu amor por você 💘💞💖💗💓</p>
+    <button id="ver-carta-btn" onclick="mostrarCarta()">Ver Cartinha ✉️</button>
+  </div>
+
+  <div id="carta-section">
+    <h2>Uma cartinha especial para você 💌</h2>
+    <p style="max-width: 600px; margin: auto; font-size: 1.2rem; line-height: 1.6;">
+      Amor da minha vida,
+      <br><br>
+      Não existem palavras suficientes pra expressar o quanto você é especial pra mim. Cada momento ao seu lado é um presente que eu guardo com muito carinho. Obrigado por me fazer sentir amado, completo e feliz todos os dias. ❤️
+      <br><br>
+      Que esse seja apenas o começo de uma história linda que estamos escrevendo juntos. Eu te amo infinitamente! 💑✨
+    </p>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.getElementById('hearts-container').appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function iniciarQuiz() {
+      document.getElementById('home-section').style.display = 'none';
+      document.getElementById('timeline-section').style.display = 'none';
+      document.getElementById('quiz-section').style.display = 'block';
+    }
+
+    function mostrarResultado() {
+      document.getElementById('quiz-section').style.display = 'none';
+      document.getElementById('resultado-section').style.display = 'block';
+    }
+
+    function mostrarCarta() {
+      document.getElementById('resultado-section').style.display = 'none';
+      document.getElementById('carta-section').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
